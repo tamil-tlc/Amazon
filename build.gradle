@@ -10,7 +10,8 @@ repositories {
 }
 
 dependencies {
-    // Add your dependencies here. Example:
+    // Add dependencies here if needed
+    // example:
     // implementation 'com.google.guava:guava:32.1.2-jre'
 }
 
@@ -21,7 +22,12 @@ tasks.withType(JavaCompile) {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'com.example.Main'  // <-- Change this to your main class
+                'Main-Class': 'Main'  // <--- Change this if your Main class is inside a package
         )
+    }
+
+    // Create a fat JAR (include all dependencies)
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
