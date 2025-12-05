@@ -1,18 +1,14 @@
-# Stage 1: Build
-FROM gradle:8.6-jdk17 AS build
+# --- Build Stage ---
+FROM gradle:8.0-jdk17 AS build
 WORKDIR /app
+
 COPY . .
-RUN gradle build -x test
+RUN gradle build --no-daemon
 
-# Stage 2: Run class files directly
-FROM eclipse-temurin:17-jdk
+# --- Run Stage ---
+FROM openjdk:17-jdk-slim
 WORKDIR /app
 
-# Copy compiled .class files
-COPY --from=build /app/build/classes/java/main /app/classes
+COPY --from=build /app/build/libs/*.jar app.jar
 
-# Set classpath
-ENV CLASSPATH=/app/classes
-
-# Change this to your actual Main class (with package if any)
-ENTRYPOINT ["java", "Main"]
+CMD ["java", "-jar", "app.jar"]
