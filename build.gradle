@@ -22,7 +22,7 @@ tasks.withType(JavaCompile) {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'Main'  // <--- Change this if your Main class is inside a package
+                'Main-Class': 'Amazon.Main'  // <--- Change this if your Main class is inside a package
         )
     }
 
