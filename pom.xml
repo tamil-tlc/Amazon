@@ -39,7 +39,7 @@
                     <archive>
                         <manifest>
                             <!-- CHANGE this to your actual main class -->
-                            <mainClass>com.example.Main</mainClass>
+                            <mainClass>Amazon.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
