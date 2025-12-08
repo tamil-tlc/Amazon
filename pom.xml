@@ -18,7 +18,7 @@
     </dependencies>
 
     <build>
-        <sourceDirectory>${project.basedir}</sourceDirectory>
+        <sourceDirectory>${project.basedir}</sourceDirectory> <!-- use root folder as source -->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -27,7 +27,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>amazon.Main</mainClass>
+                            <mainClass>Amazon.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
